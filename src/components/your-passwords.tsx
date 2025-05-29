@@ -7,6 +7,15 @@ import { Badge } from "@/components/ui/badge"
 import { Key, Eye, EyeOff, Copy, Trash2, ExternalLink } from "lucide-react"
 import { toast } from "sonner"
 
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString)
+  return date.toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  })
+}
+
 const mockPasswords = [
   {
     id: 1,
@@ -133,7 +142,7 @@ export function YourPasswords() {
 
               <div className="flex justify-end">
                 <Badge variant="outline" className="text-xs">
-                  Added {new Date(password.createdAt).toLocaleDateString()}
+                  Added {formatDate(password.createdAt)}
                 </Badge>
               </div>
             </CardContent>

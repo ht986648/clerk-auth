@@ -5,7 +5,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "sonner"
 import { ClerkProvider } from "@clerk/nextjs"
-
+import Navbar from "@/components/Navbar"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
@@ -22,10 +22,11 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <body className={inter.className}>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-            {children}
+          <Navbar/>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
             <Toaster richColors position="top-right" />
-          </ThemeProvider>
+        </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
